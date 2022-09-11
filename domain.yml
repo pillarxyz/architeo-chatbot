@@ -8,12 +8,28 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - user_intent
+  - personal_data
+  - rating
+  - candidature_type
 
 responses:
   utter_greet:
-  - text: "Bonjour! Je suis Architeo Bot, Comment je peux vous aider ?"
+  - text: "Bonjour! Je suis Architeo Bot. C’est quoi votre nom ?"
   utter_goodbye:
   - text: "Bonne journée"
+  utter_user_intent:
+  - text: "D’accord. Je vais vous assistez durant votre journée avec Architeo. Vous voulez postuler pour un offre ou bien s’agit-il d’une candidature spontannée ?"
+  utter_personal_data:
+  - text: "enchanté (username). Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?"
+  utter_rating:
+  - text: "merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir."
+  utter_confirmation:
+  - text: "votre demande a été prise en charge avec succès. merci d’avoir choisi Architeo! Avant de finir, je voudrais bien savoir comment vous avez trouvé cet échange sur un échelle de 1 (mauvais) à 5 (excellent)."
+  utter_cadidature_type:
+  - text: "merci d'envoyer votre CV en format PDF à l'email : jhdjhd@jhkdjhkd.com "
+  
+
 
 
 session_config:

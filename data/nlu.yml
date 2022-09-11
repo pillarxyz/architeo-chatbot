@@ -3,10 +3,19 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - Bonjour
-    - Salut
-    - Bonsoir
-    - Hey
+    - salut
+    - salam
+    - bonjour
+    - bonsoir
+    - bnjr
+    - slt
+    - bnsr
+    - salamo alikom
+    - hello
+    - hi
+    - hey
+    - hello architeo
+    - salut architeo
 
 - intent: goodbye
   examples: |
@@ -27,4 +36,54 @@ nlu:
     - don't like that
     - no way
     - not really
+
+- intent: personal_data
+  examples: |
+    - Hamza Ba-mohammed
+    - Ayman Lafaz
+    - Hajar El Idrissi
+    - Hamza
+    - Ayman
+    - Hajar
+    - je m’appelle hamza
+    - je suis ayman
+    - c’est hajar
+    - mon nom est Ayman Lafaz
+
+- intent: user_intent
+  examples: |
+    - client
+    - candidat
+    - recruteur
+    - je cherche un partenariat
+    - je suis un client
+    - je suis un candidat
+    - je veux un partenariat
+
+- intent: candidature_type
+  examples: |
+    - je veux postuler pour un offre
+    - je veux une candidature spontannée
+    - candidature spontannée
+    - candidature pour un poste
+
+- intent: rating
+  examples: |
+    - bon
+    - bien
+    - good
+    - parfait
+    - pas mal
+    - excellent
+    - je le trouve bon
+    - je l’ai trouvé excellent
+    - très bien
+    - satisfaisant
+    - insatisfaisant
+    - très mauvais
+    - mauvais
+    - catastrophique
+    - horrible
+    - j’aime pas
+    - j’ai adoré
 

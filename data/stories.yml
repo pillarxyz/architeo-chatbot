@@ -7,3 +7,27 @@ stories:
   - intent: greet
   - action: utter_greet
 
+- story: candidate
+  steps:
+  - user: |
+      bonjour
+    intent: greet
+  - action: utter_greet
+  - user: |
+      je m'appelle hamza
+    intent: personal_data
+  - action: utter_personal_data
+  - user: |
+      je suis un client
+    intent: user_intent
+  - action: utter_user_intent
+  - user: |
+      je veux une candidature spontannée
+    intent: candidature_type
+  - action: utter_cadidature_type
+  - action: utter_confirmation
+  - user: |
+      bon
+    intent: rating
+  - action: utter_rating
+
