@@ -16,74 +16,132 @@ nlu:
     - hey
     - hello architeo
     - salut architeo
+    - yoo
 
 - intent: goodbye
   examples: |
-    - Bonne journée
+    - au revoir
+    - à bientot
+    - a plus
+    - ciao
 
 - intent: affirm
   examples: |
     - oui
     - Bien sur
     - C'est bon
+    - d'accord
+    - ok
+    - k
+    - ouiiiii
+    - yes
 
 - intent: deny
   examples: |
+    - non
+    - nn
+    - je refuse
+    - je ne veux pas
+    - je ne suis pas d'accord
+    - nooooon$
     - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
 
-- intent: personal_data
+- intent: full_name
   examples: |
-    - Hamza Ba-mohammed
-    - Ayman Lafaz
-    - Hajar El Idrissi
-    - Hamza
-    - Ayman
-    - Hajar
-    - je m’appelle hamza
-    - je suis ayman
-    - c’est hajar
-    - mon nom est Ayman Lafaz
+    - [Hamza Ba-mohammed](full_name)
+    - [Ayman Lafaz](full_name)
+    - [Hajar El Idrissi](full_name)
+    - [Mohammed Bendahou](full_name)
+    - [Amine Sebti](full_name)
+    - [Ilham Taheri](full_name)
+    - je m’appelle [Hamza Ba-mohammed](full_name)
+    - je suis [Ayman Lafaz](full_name)
+    - c’est [Hajar El Idrissi](full_name)
+    - je m’appelle [Mohammed Bendahou](full_name)
+    - mon nom est [Amine sebti](full_name)
+    - je suis [Ilham Taheri](full_name)
 
 - intent: user_intent
   examples: |
-    - client
-    - candidat
-    - recruteur
-    - je cherche un partenariat
-    - je suis un client
-    - je suis un candidat
-    - je veux un partenariat
+    - [client](user_intent)
+    - [candidat](user_intent)
+    - [recruteur](user_intent)
+    - je cherche un [partenariat](user_intent)
+    - je suis [client](user_intent)
+    - je suis un [client](user_intent)
+    - je suis un [candidat](user_intent)
+    - je suis [candidat](user_intent)
+    - je veux un [partenariat](user_intent)
+    - je veux [partenariat](user_intent)
+    - je souhaite poser ma [candidature](user_intent)
+    - je veux établir un [partenariat](user_intent)
+    - je veux faire [partenariat](user_intent)
+    - je veux faire un [partenariat](user_intent)
+    - permettez-moi de poser ma [candidature](user_intent)
+
 
 - intent: candidature_type
   examples: |
-    - je veux postuler pour un offre
-    - je veux une candidature spontannée
-    - candidature spontannée
-    - candidature pour un poste
+    - je veux postuler pour un [offre](candidature_type)
+    - je veux une [candidature spontannée](candidature_type)
+    - [candidature spontannée](candidature_type)
+    - candidature pour un [poste](candidature_type)
 
 - intent: rating
   examples: |
-    - bon
-    - bien
-    - good
-    - parfait
-    - pas mal
-    - excellent
-    - je le trouve bon
-    - je l’ai trouvé excellent
-    - très bien
-    - satisfaisant
-    - insatisfaisant
-    - très mauvais
-    - mauvais
-    - catastrophique
-    - horrible
-    - j’aime pas
-    - j’ai adoré
+    - [bon](rating)
+    - [bien](rating)
+    - [good](rating)
+    - [parfait](rating)
+    - [pas mal](rating)
+    - [excellent](rating)
+    - je le trouve [bon](rating)
+    - je l’ai trouvé [excellent](rating)
+    - [très bien](rating)
+    - [satisfaisant](rating)
+    - [insatisfaisant](rating)
+    - [très mauvais](rating)
+    - [mauvais](rating)
+    - [catastrophique](rating)
+    - [horrible](rating)
+    - [j’aime pas](rating)
+    - [j’ai adoré](rating)
+    - [j’aime](rating)
+    - [bon](rating) service
+    - je suis [satisfait](rating) 
+    - je suis [satisfaite](rating)
+    - je suis tellement [déçu](rating)
+    - je suis tellement [déçue](rating)
+    - [impressionnant](rating)
+    - [dégueulasse](rating)
+    - [repoussant](rating)
+    - [idéal](rating)
+    - [incomparable](rating)
+
+- intent: tel
+  examples: |
+    - [+212698234567](tel)
+    - [+212700489081](tel)
+    - [+212768204793](tel)
+  
+- intent: email
+  examples: |
+    - [bamohammed.empimo@gmail.com](email)
+    - [ayman@aymanlafaz.xyz](email)
+    - [hamza.bamohammed@um5r.ac.ma](email)
+    - [h.bamohammed@ieee.org](email)
+
+- intent: raison_sociale
+  examples: |
+    - [Centrale](raison_sociale)
+    - [Danone](raison_sociale)
+    - [Toyota](raison_sociale)
+    - [OCP](raison_sociale)
+    - [Afriquia Gaz](raison_sociale)
+    - [Marjane](raison_sociale)
+    - [Lusiour](raison_sociale)
+    - [Coca-Cola](raison_sociale)
+    - [Pepsi](raison_sociale)
+    - [Airbnb](raison_sociale)
+    - [Huawei](raison_sociale)
 

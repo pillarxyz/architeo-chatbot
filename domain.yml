@@ -1,5 +1,14 @@
 version: "3.1"
 
+
+entities:
+  - full_name
+  - type_client
+  - user_intent
+  - tel
+  - email
+  - raison_sociale
+
 intents:
   - greet
   - goodbye
@@ -9,19 +18,22 @@ intents:
   - mood_unhappy
   - bot_challenge
   - user_intent
-  - personal_data
+  - full_name
   - rating
   - candidature_type
+  - tel
+  - email
+  - raison_sociale
 
 responses:
   utter_greet:
-  - text: "Bonjour! Je suis Architeo Bot. C’est quoi votre nom ?"
+  - text: "Bonjour! Je suis Architeo Bot. Quelle est votre nom ?"
   utter_goodbye:
   - text: "Bonne journée"
   utter_user_intent:
   - text: "D’accord. Je vais vous assistez durant votre journée avec Architeo. Vous voulez postuler pour un offre ou bien s’agit-il d’une candidature spontannée ?"
   utter_personal_data:
-  - text: "enchanté (username). Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?"
+  - text: "Enchanté {name} !. Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?"
   utter_rating:
   - text: "merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir."
   utter_confirmation:
@@ -30,6 +42,23 @@ responses:
   - text: "merci d'envoyer votre CV en format PDF à l'email : jhdjhd@jhkdjhkd.com "
   
 
+actions:
+- actions_save_name
+
+slots:
+  name:
+    initial_value: Human
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+
+  type:
+    initial_value: Client
+    type: text
+    mappings:
+      - type: from_entity
+        entity: type_client
 
 
 session_config:
