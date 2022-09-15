@@ -2,32 +2,21 @@ version: "3.1"
 
 stories:
 
-- story: path
+- story: candidate
   steps:
   - intent: greet
   - action: utter_greet
-
-- story: candidate
-  steps:
-  - user: |
-      bonjour
-    intent: greet
-  - action: utter_greet
-  - user: |
-      je m'appelle hamza
-    intent: personal_data
+  - intent: personal_data
+#  #- action: actions_save_name
   - action: utter_personal_data
-  - user: |
-      je suis un client
-    intent: user_intent
+  - intent: user_intent
+  - slot_was_set:
+      - type: Candidat
   - action: utter_user_intent
-  - user: |
-      je veux une candidature spontannée
-    intent: candidature_type
+  - intent: candidature_type
   - action: utter_cadidature_type
+  - intent: affirm
   - action: utter_confirmation
-  - user: |
-      bon
-    intent: rating
+  - intent: rating
   - action: utter_rating
 

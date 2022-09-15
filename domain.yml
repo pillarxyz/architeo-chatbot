@@ -1,5 +1,9 @@
 version: "3.1"
 
+entities:
+  - PERSON
+  - type_client
+
 intents:
   - greet
   - goodbye
@@ -18,10 +22,10 @@ responses:
   - text: "Bonjour! Je suis Architeo Bot. C’est quoi votre nom ?"
   utter_goodbye:
   - text: "Bonne journée"
+  utter_personal_data:
+  - text: "Enchanté Mr. {PERSON}. Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?"
   utter_user_intent:
   - text: "D’accord. Je vais vous assistez durant votre journée avec Architeo. Vous voulez postuler pour un offre ou bien s’agit-il d’une candidature spontannée ?"
-  utter_personal_data:
-  - text: "enchanté (username). Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?"
   utter_rating:
   - text: "merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir."
   utter_confirmation:
@@ -29,7 +33,34 @@ responses:
   utter_cadidature_type:
   - text: "merci d'envoyer votre CV en format PDF à l'email : jhdjhd@jhkdjhkd.com "
   
+#forms:
+#  save_name:
+#    required_slots:
+#actions:
+#  - actions_save_name
+#  - actions_save_type
 
+
+slots:
+  PERSON:
+    initial_value: Human
+    influence_conversation: false
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PERSON
+
+  type:
+    initial_value: Client
+    type: categorical
+    values:
+      - Client
+      - Candidat
+      - Partenariat
+      - Recruteur
+    mappings:
+      - type: from_entity
+        entity: type_client
 
 
 session_config:
