@@ -16,26 +16,35 @@ nlu:
     - hey
     - hello architeo
     - salut architeo
+    - yoo
 
 - intent: goodbye
   examples: |
-    - Bonne journée
+    - au revoir
+    - à bientot
+    - a plus
+    - ciao
 
 - intent: affirm
   examples: |
     - oui
     - Bien sur
     - C'est bon
+    - d'accord
+    - ok
+    - k
+    - ouiiiii
+    - yes
 
 - intent: deny
   examples: |
+    - non
+    - nn
+    - je refuse
+    - je ne veux pas
+    - je ne suis pas d'accord
+    - nooooon
     - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
 
 - intent: personal_data
   examples: |
@@ -92,7 +101,6 @@ nlu:
     - horrible
     - j’aime pas
     - j’ai adoré
-
 
 - lookup: PERSON
   examples: |

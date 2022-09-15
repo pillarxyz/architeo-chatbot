@@ -1,10 +1,4 @@
 - rules:
-  - rule: extract name
-    steps:
-    - intent: personal_data
-    - action: actions_save_name
-    - active_loop: actions_save_name
-
   - rule: submit name
     condition:
     - active_loop: actions_save_name
@@ -15,15 +9,7 @@
       - PERSON: null
     - action: utter_personal_data
 
-
-- rules:
-  - rule: extract client type
-    steps:
-    - intent: personal_data
-    - action: actions_save_name
-    - active_loop: actions_save_name
-
-  - rule: submit name
+  - rule: submit client type
     condition:
     - active_loop: actions_save_type
     steps:
@@ -32,3 +18,28 @@
     - slot_was_set:
       - type_client: null
     - action: utter_user_intent
+
+  - rule: submit application
+    condition:
+    - active_loop: actions_save_candidature
+    steps:
+    - action: actions_save_candidature
+    - active_loop: null
+    - slot_was_set:
+      - candidature: null
+
+
+#  - rule: answer offre enquery
+#    steps:
+#      - slot_was_set:
+#          - candidature: Offre
+#      - intent: candidature_type
+#      - action: utter_offre
+#
+#  - rule: answer application enquery
+#    steps:
+#      - slot_was_set:
+#          - candidature: Spontanée
+#      - intent: candidature_type
+#      - action: utter_candidature
+    

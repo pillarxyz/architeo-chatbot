@@ -3,6 +3,7 @@ version: "3.1"
 entities:
   - PERSON
   - type_client
+  - candidature
 
 intents:
   - greet
@@ -16,10 +17,13 @@ intents:
   - personal_data
   - rating
   - candidature_type
+  - tel
+  - email
+  - raison_sociale
 
 responses:
   utter_greet:
-  - text: "Bonjour! Je suis Architeo Bot. C’est quoi votre nom ?"
+  - text: "Bonjour! Je suis Architeo Bot. Quelle est votre nom ?"
   utter_goodbye:
   - text: "Bonne journée"
   utter_personal_data:
@@ -30,15 +34,12 @@ responses:
   - text: "merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir."
   utter_confirmation:
   - text: "votre demande a été prise en charge avec succès. merci d’avoir choisi Architeo! Avant de finir, je voudrais bien savoir comment vous avez trouvé cet échange sur un échelle de 1 (mauvais) à 5 (excellent)."
-  utter_cadidature_type:
-  - text: "merci d'envoyer votre CV en format PDF à l'email : jhdjhd@jhkdjhkd.com "
+  utter_candidature:
+  - text: "merci d'envoyer votre CV en format PDF à l'email : jobs@architeo.co"
+  utter_offre:
+  - text: "merci de postuler dans les offres disponible à https://www.linkedin.com/company/architeo/jobs/"
   
-#forms:
-#  save_name:
-#    required_slots:
-#actions:
-#  - actions_save_name
-#  - actions_save_type
+
 
 
 slots:
@@ -61,6 +62,15 @@ slots:
     mappings:
       - type: from_entity
         entity: type_client
+
+  candidature:
+    type: categorical
+    values:
+      - Offre
+      - Spontanée
+    mappings:
+      - type: from_entity
+        entity: candidature
 
 
 session_config:

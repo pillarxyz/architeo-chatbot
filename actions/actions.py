@@ -20,11 +20,11 @@ class actions_save_type(Action):
 class actions_save_name(Action):
         def name(self) -> Text:
             return "actions_save_name"
-#    
+    
         def run(self, dispatcher: CollectingDispatcher,
                 tracker: Tracker,
                 domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
+
             PERSON = next(tracker.get_latest_entity_values("PERSON"), None)
             if PERSON is not None:
                 PERSON = PERSON.replace("Je suis", "")
@@ -32,3 +32,15 @@ class actions_save_name(Action):
                 PERSON = PERSON.strip()
             dispatcher.utter_message(response="utter_personal_data", PERSON=PERSON)
             return [SlotSet("name", PERSON)]
+
+class actions_save_candidature(Action):
+        def name(self) -> Text:
+            return "actions_save_candidature"
+    
+        def run(self, dispatcher: CollectingDispatcher,
+                tracker: Tracker,
+                domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+            candidature = next(tracker.get_latest_entity_values("candidature"), None)
+            dispatcher.utter_message(response="utter_cadidature", candidature=candidature)
+            return [SlotSet("candidature", candidature)]
