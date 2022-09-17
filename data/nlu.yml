@@ -1,8 +1,8 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
+    - Bonjour
     - salut
     - salam
     - bonjour
@@ -17,16 +17,69 @@ nlu:
     - hello architeo
     - salut architeo
     - yoo
-
-- intent: goodbye
+    - Salut
+- intent: personal_data
   examples: |
-    - au revoir
-    - à bientot
-    - a plus
-    - ciao
+    - Je suis [Ayman]{"entity": "PERSON", "value": "Ayman"}
+    - je m’appelle [Hamza Ba-mohammed]{"entity": "PERSON", "value": "Hamza Ba-mohammed"}
+    - je suis [Ayman Lafaz]{"entity": "PERSON", "value": "Ayman Lafaz"}
+    - c’est [Hajar El Idrissi]{"entity": "PERSON", "value": "Hajar El Idrissi"}
+    - je m’appelle [Mohammed Bendahou]{"entity": "PERSON", "value": "Mohammed Bendahou"}
+    - mon nom est [Amine sebti]{"entity": "PERSON", "value": "Amine sebti"}
+    - je suis [Ilham Taheri]{"entity": "PERSON", "value": "Ilham Taheri"}
+    - je suis [Ali]{"entity": "PERSON", "value": "Ali"}
+    - je m'appelle [Driss]{"entity": "PERSON", "value": "Driss"}
+- intent: user_intent
+  examples: |
+    - Je suis un [candidat]{"entity": "type_client", "value": "Candidat"}
+    - [client]{"entity": "type_client", "value": "Client"}
+    - [candidat]{"entity": "type_client", "value": "Candidat"}
+    - [recruteur]{"entity": "type_client", "value": "Recruteur"}
+    - je cherche un [partenariat]{"entity": "type_client", "value": "Partenariat"}
+    - je suis [client]{"entity": "type_client", "value": "Client"}
+    - je suis un [client]{"entity": "type_client", "value": "Client"}
+    - je suis un [candidat]{"entity": "type_client", "value": "Candidat"}
+    - je suis [candidat]{"entity": "type_client", "value": "Candidat"}
+    - je veux un [partenariat]{"entity": "type_client", "value": "Partenariat"}
+    - je veux [partenariat]{"entity": "type_client", "value": "Partenariat"}
+    - je souhaite poser ma [candidature]{"entity": "type_client", "value": "Candidat"}
+    - je veux établir un [partenariat]{"entity": "type_client", "value": "Partenariat"}
+    - je veux faire [partenariat]{"entity": "type_client", "value": "Partenariat"}
+    - je veux faire un [partenariat]{"entity": "type_client", "value": "Partenariat"}
+    - permettez-moi de poser ma [candidature]{"entity": "type_client", "value": "Candidat"}
+    - un [candidat]{"entity": "type_client", "value": "Candidat"}
+    - une [candidate]{"entity": "type_client", "value": "Candidat"}
+- intent: candidature_type
+  examples: |
+    - Je veux postuler pour une [offre](candidature)
+    - je veux postuler pour une [offre](candidature)
+    - je veux une candidature [spontanée](candidature)
+    - candidature [spontanée](candidature)
+    - candidature pour un [poste](candidature)
+    - une candidature [spontanée](candidature) s'il vous plait
+    - je cherche une [offre](candidature)
+    - une [offre](candidature)
+    - [candidature](candidature)
+
+- synonym: Offre
+  examples: |
+    - poste
+    - posting
+    - Offre de stage
+    - Offre d'emploi
+    - offre d'emploi
+    - offre
+
+- synonym: Spontanée
+  examples: |
+    - candidature
+    - spontanée
+    - spontanee
+    - Spontanee
 
 - intent: affirm
   examples: |
+    - D'accord
     - oui
     - Bien sur
     - C'est bon
@@ -35,6 +88,9 @@ nlu:
     - k
     - ouiiiii
     - yes
+    - merci beaucoup
+    - oui
+    - okay
 
 - intent: deny
   examples: |
@@ -46,44 +102,9 @@ nlu:
     - nooooon
     - no
 
-- intent: personal_data
-  examples: |
-    - je m’appelle [Hamza Ba-mohammed](PERSON)
-    - je suis [Ayman Lafaz](PERSON)
-    - c’est [Hajar El Idrissi](PERSON)
-    - je m’appelle [Mohammed Bendahou](PERSON)
-    - mon nom est [Amine sebti](PERSON)
-    - je suis [Ilham Taheri](PERSON)
-    - je suis [Ali](PERSON)
-
-- intent: user_intent
-  examples: |
-    - [client](type_client)
-    - [candidat](type_client)
-    - [recruteur](type_client)
-    - je cherche un [partenariat](type_client)
-    - je suis [client](type_client)
-    - je suis un [client](type_client)
-    - je suis un [candidat](type_client)
-    - je suis [candidat](type_client)
-    - je veux un [partenariat](type_client)
-    - je veux [partenariat](type_client)
-    - je souhaite poser ma [candidature](type_client)
-    - je veux établir un [partenariat](type_client)
-    - je veux faire [partenariat](type_client)
-    - je veux faire un [partenariat](type_client)
-    - permettez-moi de poser ma [candidature](type_client)
-
-- intent: candidature_type
-  examples: |
-    - je veux postuler pour une [offre](candidature)
-    - je veux une candidature [spontanée](candidature)
-    - candidature [spontanée](candidature)
-    - candidature pour un [poste](candidature)
-    - une candidature [spontanée](candidature) s'il vous plait
-
 - intent: rating
   examples: |
+    - Excellent
     - bon
     - bien
     - good
@@ -101,6 +122,19 @@ nlu:
     - horrible
     - j’aime pas
     - j’ai adoré
+    
+- intent: goodbye
+  examples: |
+    - Au revoir
+    - au revoir
+    - à bientot
+    - a plus
+    - ciao
+
+- intent: provide_recruiter_info
+  examples: |
+    - Je cherche des profils [data engineering]() 
+
 
 - lookup: PERSON
   examples: |

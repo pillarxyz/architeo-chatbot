@@ -1,45 +1,43 @@
-- rules:
-  - rule: submit name
-    condition:
-    - active_loop: actions_save_name
+rules:
+  - rule: Conversation Starter
+    conversation_start: true
     steps:
-    - action: actions_save_name
-    - active_loop: null
-    - slot_was_set:
-      - PERSON: null
+    - intent: greet
+    - action: utter_greet
+
+  - rule: Address User
+    steps:
+    - intent: personal_data
+    - action: action_extract_slots
     - action: utter_personal_data
-
-  - rule: submit client type
-    condition:
-    - active_loop: actions_save_type
+    wait_for_user_input: true
+  
+  - rule: Address Candidat
     steps:
-    - action: actions_save_type
-    - active_loop: null
-    - slot_was_set:
-      - type_client: null
-    - action: utter_user_intent
+    - intent: user_intent
+      entities:
+      - type_client: Candidat
+    - action: action_extract_slots
+    - action: utter_user_application
 
-  - rule: submit application
-    condition:
-    - active_loop: actions_save_candidature
+  - rule: Answer Job offer enquery
     steps:
-    - action: actions_save_candidature
-    - active_loop: null
+    - intent: candidature_type
     - slot_was_set:
-      - candidature: null
+      - candidature: Offre
+    - action: utter_offre
 
+  - rule: Answer spontaneous job request
+    steps:
+    - intent: candidature_type
+    - slot_was_set:
+      - candidature: Spontanée
+    - action: utter_candidature
 
-#  - rule: answer offre enquery
-#    steps:
-#      - slot_was_set:
-#          - candidature: Offre
-#      - intent: candidature_type
-#      - action: utter_offre
-#
-#  - rule: answer application enquery
-#    steps:
-#      - slot_was_set:
-#          - candidature: Spontanée
-#      - intent: candidature_type
-#      - action: utter_candidature
-    
+  - rule: Ask Recruiter for the number of applicants
+    steps:
+    - intent: user_intent
+      entities:
+      - type_client: Recruteur
+    - action: action_extract_slots
+    - action: ask_recruiter_info

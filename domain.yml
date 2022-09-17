@@ -1,76 +1,101 @@
-version: "3.1"
-
+version: '3.1'
 entities:
-  - PERSON
-  - type_client
-  - candidature
+- type_client
+- candidature
+- PERSON
+- partnership
+- number_applicants
 
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - user_intent
-  - personal_data
-  - rating
-  - candidature_type
-  - tel
-  - email
-  - raison_sociale
+- affirm
+- bot_challenge
+- candidature_type
+- deny
+- contact_info
+- goodbye
+- greet
+- personal_data
+- raison_sociale
+- rating
+- user_intent
+- provide_recruiter_info
 
 responses:
-  utter_greet:
-  - text: "Bonjour! Je suis Architeo Bot. Quelle est votre nom ?"
-  utter_goodbye:
-  - text: "Bonne journée"
-  utter_personal_data:
-  - text: "Enchanté Mr. {PERSON}. Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?"
-  utter_user_intent:
-  - text: "D’accord. Je vais vous assistez durant votre journée avec Architeo. Vous voulez postuler pour un offre ou bien s’agit-il d’une candidature spontannée ?"
-  utter_rating:
-  - text: "merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir."
-  utter_confirmation:
-  - text: "votre demande a été prise en charge avec succès. merci d’avoir choisi Architeo! Avant de finir, je voudrais bien savoir comment vous avez trouvé cet échange sur un échelle de 1 (mauvais) à 5 (excellent)."
+  utter_greet/greet:
+  - text: Bonjour! Je suis Architeo Bot. Quelle est votre nom ?
+  utter_goodbye/goodbye:
+  - text: Bonne journée
+  utter_personal_data/personal_data:
+  - text: Enchanté Mr. {PERSON}. Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?
+  utter_user_application:
+  - text: D’accord. Je vais vous assistez durant votre journée avec Architeo. Vous voulez postuler pour un offre ou bien s’agit-il d’une candidature spontannée ?
+  utter_rating/rating:
+  - text: merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir.
+  utter_confirmation/affirm:
+  - text: votre demande a été prise en charge avec succès. merci d’avoir choisi Architeo! Avant de finir, je voudrais bien savoir comment vous avez trouvé cet échange sur un échelle de 1 (mauvais) à 5 (excellent).
   utter_candidature:
   - text: "merci d'envoyer votre CV en format PDF à l'email : jobs@architeo.co"
   utter_offre:
-  - text: "merci de postuler dans les offres disponible à https://www.linkedin.com/company/architeo/jobs/"
+  - text: merci de postuler dans les offres disponible à https://www.linkedin.com/company/architeo/jobs/
+  ask_needed_jobs:
+  - text: Quels sont les domaines d’expertise à recruter?
+  ask_partnership_type:
+  - text: Quelle est le type de partenariat souhaité?
+  propose_meeting:
+  - text: Quand pourrez-vous organiser une réunion avec nous ?
+  ask_more_info:
+  - text: Pouvez-vous nous fournir vos coordonnées pour que nous puissions vous contacter ?
+  ask_recruiter_info:
+  - text: Quelle sonts les profils qui vous interessent et combien des candidats voulez-vous recruter?
   
-
-
 
 slots:
   PERSON:
-    initial_value: Human
-    influence_conversation: false
     type: text
     mappings:
-      - type: from_entity
-        entity: PERSON
-
+    - type: from_entity
+      entity: PERSON
   type:
-    initial_value: Client
     type: categorical
     values:
-      - Client
-      - Candidat
-      - Partenariat
-      - Recruteur
+    - Client
+    - Candidat
+    - Partenariat
+    - Recruteur
     mappings:
-      - type: from_entity
-        entity: type_client
-
+    - type: from_entity
+      entity: type_client
   candidature:
     type: categorical
+    influence_conversation: true
     values:
-      - Offre
-      - Spontanée
+    - Offre
+    - Spontanée
     mappings:
-      - type: from_entity
-        entity: candidature
+    - type: from_entity
+      entity: candidature
+  partnership:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: partnership
+  number_applicants:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: number_applicants
+
+actions:
+- utter_confirmation
+- utter_candidature
+- utter_goodbye
+- utter_greet
+- utter_offre
+- utter_personal_data
+- utter_rating
+- utter_user_application
+- ask_recruiter_info
 
 
 session_config:

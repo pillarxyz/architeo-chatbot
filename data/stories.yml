@@ -1,46 +1,10 @@
 version: "3.1"
-
 stories:
-
-- story: candidate offre
+- story: end of conversation
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: personal_data
-#  #- action: actions_save_name
-  - action: utter_personal_data
-  - intent: user_intent
-  - slot_was_set:
-      - type: Candidat
-  - action: utter_user_intent
-  - intent: candidature_type
-  - slot_was_set:
-      - type: Offre
-  - action: utter_offre
   - intent: affirm
   - action: utter_confirmation
   - intent: rating
   - action: utter_rating
-
-
-#- story: candidate candidature
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: personal_data
-##  #- action: actions_save_name
-#  - action: utter_personal_data
-#  - intent: user_intent
-#  - slot_was_set:
-#      - type: Candidat
-#  - action: utter_user_intent
-#  - intent: candidature_type
-#  - slot_was_set:
-#      - type: Spontanée
-#  - action: utter_candidature
-#  - intent: affirm
-#  - action: utter_confirmation
-#  - intent: rating
-#  - action: utter_rating
-#
-#
+  - intent: goodbye
+  - action: utter_goodbye
