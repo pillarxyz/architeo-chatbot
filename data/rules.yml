@@ -58,5 +58,37 @@ rules:
     steps:
     - intent: contact_info
     - action: action_extract_slots
+    - action: utter_propose_meeting
+
+
+  - rule: Reply after being provided a meeting date
+    steps:
+    - intent: fixing_meeting
+    - action: action_extract_slots
     - action: utter_confirmation
+
+  - rule: Address Client
+    steps:
+    - intent: user_intent
+      entities:
+      - type_client: Client
+    - action: action_extract_slots
+    - action: utter_client_partner_info
+  
+  - rule: Address Partner
+    steps:
+    - intent: user_intent
+      entities:
+      - type_client: Partenariat
+    - action: action_extract_slots
+    - action: utter_client_partner_info
+  
+  - rule: Handling failures in conversation
+    steps:
+    - intent: nlu_fallback
+    - action: utter_nlu_fallback
+
+  
+
+  
 

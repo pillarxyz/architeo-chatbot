@@ -3,11 +3,13 @@ entities:
 - type_client
 - candidature
 - PERSON
-- partnership
 - number_applicants
 - profile_interest
 - email
 - phone_number
+- Company
+- day
+- hour
 
 intents:
 - affirm
@@ -20,6 +22,7 @@ intents:
 - rating
 - user_intent
 - recruiter_request
+- fixing_meeting
 
 responses:
   utter_greet:
@@ -38,15 +41,16 @@ responses:
   - text: "merci d'envoyer votre CV en format PDF à l'email : jobs@architeo.co"
   utter_offre:
   - text: merci de postuler dans les offres disponible à https://www.linkedin.com/company/architeo/jobs/
-  utter_partnership_type:
-  - text: Quelle est le type de partenariat souhaité?
   utter_propose_meeting:
   - text: Quand pourrez-vous organiser une réunion avec nous ?
   utter_more_info:
   - text: Pouvez-vous nous fournir vos coordonnées pour que nous puissions vous contacter ?
   utter_recruiter_info:
   - text: Quelle sonts les profils qui vous interessent et combien des candidats voulez-vous recruter?
-  
+  utter_client_partner_info:
+  - text: Pouvez vous nous fournir avec vos coordonnées pour que nous puissions vous contacter ainsi que des informations sur votre organisme ?
+  utter_nlu_fallback:
+  - text: Je suis désolé, je n'ai pas compris. Pouvez-vous répéter ou reformuler votre requête s'il vous plaît?
 
 slots:
   PERSON:
@@ -73,12 +77,7 @@ slots:
     mappings:
     - type: from_entity
       entity: candidature
-  partnership:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: partnership
+      
   number_applicants:
     type: float
     mappings:
@@ -102,6 +101,24 @@ slots:
     mappings:
     - type: from_entity
       entity: phone_number
+  
+  Company:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: Company
+
+  day:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: day
+
+  hour:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: hour
 
 actions:
 - utter_confirmation

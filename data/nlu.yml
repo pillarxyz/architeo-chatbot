@@ -49,6 +49,7 @@ nlu:
     - permettez-moi de poser ma [candidature]{"entity": "type_client", "value": "Candidat"}
     - un [candidat]{"entity": "type_client", "value": "Candidat"}
     - une [candidate]{"entity": "type_client", "value": "Candidat"}
+    - je suis un [candidat]{"entity": "type_client", "value": "Candidat"}
 - intent: candidature_type
   examples: |
     - Je veux postuler pour une [offre](candidature)
@@ -71,12 +72,33 @@ nlu:
     - J'ai besoin [10](number_applicants) [software developers](profile_interest) pour mon projet
     - On est besoin d'[un]{"entity": "number_applicants", "value": 1} [devops engineer](profile_interest)
     - Je cherche des profils [developpeurs mobile](profile_interest)
+    - Je cherche des profils [data analyst](profile_interest)
+    - Je cherche des profils [data scientist](profile_interest)
+
 
 - intent: contact_info
   examples: |
     - Mon email est [somecompany@somedomain.com](email), et vous pouvez me joindre au [+212 6 00 00 00 00](phone_number)
     - Vous pouvez me joindre au [+33 4 54 00 56 11](phone_number) et mon email est [name@name.fr]
     - Email: [email@email.ma](email), Téléphone: [0600000000](phone_number)
+    - Nous sommes [DXC Technology](Company) vous pouvez nous joindre au [0600000000](phone_number) et notre email est [contact@dxc.com](email)
+    - C'est [Atos](Company) vous pouvez nous joindre au [0600000000](phone_number)
+    - Nous sommes [Steps](Company) une startup basée à Casablanca vous pouvez nous joindre au [0600000000](phone_number)
+    - Nous sommes [IBM](Company) vous pouvez nous joindre au [0600000000](phone_number)
+    - Nous sommes [Accenture](Company) vous pouvez nous joindre au [0600000000](phone_number)
+    - Nous sommes [Capgemini](Company) vous pouvez nous contacter par mail à [capgemini@contact.com](email) ou par téléphone au [0600000000](phone_number)
+
+
+- intent: fixing_meeting
+  examples: |
+    - Nous pouvons nous rencontrer ce [lundi](day) à [10h](hour)
+    - Nous pouvons nous rencontrer ce [lundi](day) à [10h](hour) ou [mardi](day) à [11h](hour)
+    - Est ce que vous etes disponible ce [mardi](day) à [16h](hour) ?
+    - [mercredi](day) à [16h30](hour), est ce que vous etes disponible ?
+    - [jeudi](day) à [10h](hour) ?
+    - [lundi](day) à [10h30](hour) ?
+    - [mardi](day) à [11h](hour) ?
+    - Est ce que vous etes disponible ce [mercredi](day) à [16h30](hour)
 
 - synonym: Offre
   examples: |
@@ -169,6 +191,77 @@ nlu:
     - ^(\+30|0)([ \-_/]*)(\d[ \-_/]*){9}$
     - ^(\+27|0)([ \-_/]*)(\d[ \-_/]*){9}$
     - ^(\+20|0)([ \-_/]*)(\d[ \-_/]*){9}$
+
+- regex: hour
+  examples: |
+    - ^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$
+    - \d{1,2}h\d{1,2}
+    - \d{1,2}h
+
+- lookup: day
+  examples: |
+    - Lundi
+    - Mardi
+    - Mercredi
+    - Jeudi
+    - Vendredi
+
+- lookup: Company
+  examples: |
+    - Google
+    - Microsoft
+    - Amazon
+    - Facebook
+    - Apple
+    - IBM
+    - Oracle
+    - SAP
+    - Accenture
+    - Capgemini
+    - Atos
+    - CGI
+    - Cegid
+    - Sopra Steria
+    - Sopra Banking Software
+    - Sopra Group
+    - Sopra Steria Consulting
+    - Dell
+    - HP
+    - Cisco
+    - DXC
+    - Salesforce
+    - ONCF
+    - OCP
+    - BMCE
+    - XHub
+    - Orange
+    - Maroc Telecom
+    - Inwi
+    - Wafa Assurance
+    - Attijariwafa Bank
+    - Danone
+    - L’Oréal
+    - Société Générale
+    - BNP Paribas
+    - Crédit Agricole
+    - Crédit du Maroc
+    - Banque Centrale Populaire
+    - Banque Populaire
+    - Banque Marocaine du Commerce Extérieur
+    - Banque Nationale Agricole
+    - Banque Populaire du Maroc
+    - Avito
+    - Booking
+    - Airbnb
+    - Uber
+    - Tesla
+    - SpaceX
+    - Agenz
+    - Airtel
+    - AlloCiné
+    - YouCan
+    - LinkedIn
+
 
 - lookup: PERSON
   examples: |
