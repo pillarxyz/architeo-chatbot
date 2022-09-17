@@ -5,47 +5,46 @@ entities:
 - PERSON
 - partnership
 - number_applicants
+- profile_interest
+- email
+- phone_number
 
 intents:
 - affirm
-- bot_challenge
 - candidature_type
 - deny
 - contact_info
 - goodbye
 - greet
 - personal_data
-- raison_sociale
 - rating
 - user_intent
-- provide_recruiter_info
+- recruiter_request
 
 responses:
-  utter_greet/greet:
+  utter_greet:
   - text: Bonjour! Je suis Architeo Bot. Quelle est votre nom ?
-  utter_goodbye/goodbye:
+  utter_goodbye:
   - text: Bonne journée
-  utter_personal_data/personal_data:
+  utter_personal_data:
   - text: Enchanté Mr. {PERSON}. Etes vous un client, un candidat, un recruteur, ou vous cherchez établir un partenariat avec Architeo ?
   utter_user_application:
   - text: D’accord. Je vais vous assistez durant votre journée avec Architeo. Vous voulez postuler pour un offre ou bien s’agit-il d’une candidature spontannée ?
-  utter_rating/rating:
+  utter_rating:
   - text: merci pour votre évaluation! ça nous aidera à améliorer l'expérience utilisateur à l'avenir.
-  utter_confirmation/affirm:
+  utter_confirmation:
   - text: votre demande a été prise en charge avec succès. merci d’avoir choisi Architeo! Avant de finir, je voudrais bien savoir comment vous avez trouvé cet échange sur un échelle de 1 (mauvais) à 5 (excellent).
   utter_candidature:
   - text: "merci d'envoyer votre CV en format PDF à l'email : jobs@architeo.co"
   utter_offre:
   - text: merci de postuler dans les offres disponible à https://www.linkedin.com/company/architeo/jobs/
-  ask_needed_jobs:
-  - text: Quels sont les domaines d’expertise à recruter?
-  ask_partnership_type:
+  utter_partnership_type:
   - text: Quelle est le type de partenariat souhaité?
-  propose_meeting:
+  utter_propose_meeting:
   - text: Quand pourrez-vous organiser une réunion avec nous ?
-  ask_more_info:
+  utter_more_info:
   - text: Pouvez-vous nous fournir vos coordonnées pour que nous puissions vous contacter ?
-  ask_recruiter_info:
+  utter_recruiter_info:
   - text: Quelle sonts les profils qui vous interessent et combien des candidats voulez-vous recruter?
   
 
@@ -86,6 +85,24 @@ slots:
     - type: from_entity
       entity: number_applicants
 
+  profile_interest:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: profile_interest
+
+  email:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: email
+
+  phone_number:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: phone_number
+
 actions:
 - utter_confirmation
 - utter_candidature
@@ -95,7 +112,10 @@ actions:
 - utter_personal_data
 - utter_rating
 - utter_user_application
-- ask_recruiter_info
+- utter_recruiter_info
+- utter_more_info
+- utter_partnership_type
+- utter_propose_meeting
 
 
 session_config:

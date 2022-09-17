@@ -1,9 +1,15 @@
+version: '3.1'
 rules:
   - rule: Conversation Starter
     conversation_start: true
     steps:
     - intent: greet
     - action: utter_greet
+
+  - rule: Conversation End
+    steps:
+    - intent: goodbye
+    - action: utter_goodbye
 
   - rule: Address User
     steps:
@@ -34,10 +40,23 @@ rules:
       - candidature: Spontanée
     - action: utter_candidature
 
-  - rule: Ask Recruiter for the number of applicants
+  - rule: Address Recruiter
     steps:
     - intent: user_intent
       entities:
       - type_client: Recruteur
     - action: action_extract_slots
-    - action: ask_recruiter_info
+    - action: utter_recruiter_info
+
+  - rule: Ask Recruiter for more info
+    steps:
+    - intent: recruiter_request
+    - action: action_extract_slots
+    - action: utter_more_info
+
+  - rule: Reply after being provided with contact info
+    steps:
+    - intent: contact_info
+    - action: action_extract_slots
+    - action: utter_confirmation
+

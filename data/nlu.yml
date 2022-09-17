@@ -60,6 +60,23 @@ nlu:
     - je cherche une [offre](candidature)
     - une [offre](candidature)
     - [candidature](candidature)
+    
+- intent: recruiter_request
+  examples: |
+    - Je suis intéressée à des profils [BI](profile_interest)
+    - Je cherche des profils [data engineering](profile_interest) 
+    - Je veux recruter [5](number_applicants) [developpeurs web](profile_interest)
+    - J'ai besoin de [deux]{"entity": "number_applicants", "value": 2} [data scientists](profile_interest)
+    - Je veux [quatre]{"entity": "number_applicants", "value": 4} [ingenieurs machine learning](profile_interest)
+    - J'ai besoin [10](number_applicants) [software developers](profile_interest) pour mon projet
+    - On est besoin d'[un]{"entity": "number_applicants", "value": 1} [devops engineer](profile_interest)
+    - Je cherche des profils [developpeurs mobile](profile_interest)
+
+- intent: contact_info
+  examples: |
+    - Mon email est [somecompany@somedomain.com](email), et vous pouvez me joindre au [+212 6 00 00 00 00](phone_number)
+    - Vous pouvez me joindre au [+33 4 54 00 56 11](phone_number) et mon email est [name@name.fr]
+    - Email: [email@email.ma](email), Téléphone: [0600000000](phone_number)
 
 - synonym: Offre
   examples: |
@@ -131,10 +148,27 @@ nlu:
     - a plus
     - ciao
 
-- intent: provide_recruiter_info
+- regex: email
   examples: |
-    - Je cherche des profils [data engineering]() 
+    - ^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$
+    - (\+212|0)([ \-_/]*)(\d[ \-_/]*){9}
+    - ^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$
 
+
+- regex: phone_number
+  examples: |
+    - ^(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+33|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+1|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+44|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+49|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+39|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+34|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+32|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+31|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+30|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+27|0)([ \-_/]*)(\d[ \-_/]*){9}$
+    - ^(\+20|0)([ \-_/]*)(\d[ \-_/]*){9}$
 
 - lookup: PERSON
   examples: |
